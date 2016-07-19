@@ -1,18 +1,15 @@
 <html>
 <head>
 <script>
-var j=10;
-for(var i=0;i<10;i++)
-{
-    if(j%i==0)
-        document.write(i+"<br/>")
-}
+var num = prompt("输入一个自然数","");
+num = parseInt(num);
 var s =0;
-for(var i=0;i<10;i++)
+for(var i=1;i<num;i++)
 {
-    if(j%i==0)
-    s = s + i;
+    if(num%i==0)
+        s = s + i;
 }
+alert(s);
 </script>
 </head>
 </html>
