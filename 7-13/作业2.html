@@ -15,21 +15,21 @@ for(var i =0;i<arr.length;i++)
 }
 function neighbours(x,y)
 {
-	var count=0;
+    var count=0;
 for(var i =-1;i<=1;i++)
 {
-   for(var j=-1;j<=1;j++)
-   {
-       if(i!=0||j!=0)
-	   {
-	        if(x+i>=0&&y+j>=0&&x+i<arr.length&&y+j<arr[x+i].length)
-			{
-	        if(arr[x+i][y+j]==1)
+    for(var j=-1;j<=1;j++)
+    {
+        if(i!=0||j!=0)
+        {
+            if(x+i>=0&&y+j>=0&&x+i<arr.length&&y+j<arr[x+i].length)
+            {
+            if(arr[x+i][y+j]==1)
 			
-			count++;
+            count++;
 			}
-	   }
-   }
+        }
+    }
 }
 return count;
 }
@@ -39,11 +39,11 @@ for(var i=0;i<arr.length;i++)
 {
     for(var j=0;j<arr[i].length;j++)
     {
-	   if(neighbours(i,j)==3&&arr[i][j]==0)
-	   {
-	       born.push([i,j]);
-	   }
-	}
+        if(neighbours(i,j)==3&&arr[i][j]==0)
+        {
+            born.push([i,j]);
+        }
+    }
 }
 for(var i=0;i<born.length;i++)
 {
@@ -54,10 +54,10 @@ for(var i=0;i<arr.length;i++)
 {
     for(var j = 0;j<arr[i].length;j++)
 	{
-	    if(neighbours(i,j)<=1&&arr[i][j]==1)
-		 {
-		 lonely.push([i,j]);
-		 }
+        if(neighbours(i,j)<=1&&arr[i][j]==1)
+        {
+        lonely.push([i,j]);
+        }
 	}
 }
 for(var i=0;i<lonely.length;i++)
@@ -68,16 +68,16 @@ var crowd=[];
 for(var i=0;i<arr.length;i++)
 {
     for(var j = 0;j<arr[i].length;j++)
-	{
-	    if(neighbours(i,j)>3&&arr[i][j]==1)
-		 {
-		 crowd.push([i,j]);
-		 }
+    {
+        if(neighbours(i,j)>3&&arr[i][j]==1)
+        {
+        crowd.push([i,j]);
+        }
 	}
 }
 for(var i=0;i<crowd.length;i++)
 {
-document.write("拥挤死的元素="+crowd[i]+"<br/>");
+    document.write("拥挤死的元素="+crowd[i]+"<br/>");
 }
 </script>
 </head>
