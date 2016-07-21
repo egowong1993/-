@@ -1,0 +1,22 @@
+<html>
+<head>
+<script>
+var i =prompt("输入n个自然数，以逗号隔开","i");
+var arr =i.split(",");
+var arr2 =[];
+for(var i in arr)
+{
+    var j = parseInt(arr[i]);
+    arr2.push(j);
+}
+console.log(arr2);
+var b = arr2[0];
+for(var i in arr2)
+{
+    if(arr2[i]<b)
+        min = arr2[i];
+}
+document.write("最小值是"+b+"第"+arr.indexOf(b)+"位");
+</script>
+</head>
+</html>
