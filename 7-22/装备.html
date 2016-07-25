@@ -1,0 +1,18 @@
+<html>
+<head>
+<script>
+var arr = ["屠龙刀_装备","千年人参_药品","张三的信_任务","玄铁_材料","别云剑_装备","城堡钥匙_任务"];
+function game(a,b)
+{
+    var arr1 = [];
+    for(var i in a)
+    {
+        if(a[i].indexOf(b)!=-1)
+            arr1.push(a[i]);
+    }
+    return arr1;
+}
+document.write(game(arr,"装备"));
+</script>
+</head>
+</html>
