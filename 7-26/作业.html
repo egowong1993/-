@@ -1,0 +1,46 @@
+﻿<html>
+<head>
+</head>
+<body>
+
+<div id = "h_name"></div>
+<div id = "h_attack"></div>
+<div id = "h_defense"></div>
+<div id = "h_hp"></div>
+<button onclick = "zs.equip(y);sync_zhuangbei(zs)">倚天剑</button>
+<button onclick = "zs.equip(t);sync_zhuangbei(zs)">屠龙刀</button>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<script>
+function Hero(n,a,d,h)
+{
+    this.name = n;
+    this.attack = a;
+    this.defense = d;
+    this.hp = h;
+    this.org_a = a;
+    this.org_d = d;
+    this.org_h = h;
+    this.equip = function(i)
+                    {
+                        this.attack = i.attack + a;
+                        this.defense = i.defense + d;
+                        this.hp = i.hp + h;
+                    }
+}
+var y = {attack:100,defense:10,hp:10};
+var t = {attack:100,defense:10,hp:10};
+var zs = new Hero("张三",100,100,100);
+h_name.innerHTML = zs.name;
+h_attack.innerHTML = zs.attack;
+h_defense.innerHTML = zs.defense;
+h_hp.innerHTML = zs.hp; 
+
+</script>
+</body>
+
+</html>

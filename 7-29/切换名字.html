@@ -1,0 +1,20 @@
+<html>
+<head>
+<script>
+var div = document.createElement("div")
+var num = ["ÍõØýÃû","ÌïÃÈ","ÕÅºê²©"];
+var i = 0;
+function shownum()
+{
+    aaa.innerHTML = num[i++];
+    if(i>2)
+    i = 0
+}
+var task = setInterval(shownum,30);
+</script>
+</head>
+<body>
+<div id = "aaa"></div>
+<button onclick="clearInterval(task);">³é½±</button>
+</body>
+</html>

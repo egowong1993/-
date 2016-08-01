@@ -1,0 +1,26 @@
+<html>
+<head>
+<body>
+<script>
+ var div = document.createElement("div");
+    div.style.width ="100px";
+    div.style.height ="100px";
+    div.style.border ="1px solid black";
+    div.style.position ="absolute";
+    div.style.left ="350px";
+    div.style.top ="100px";
+    div.style.background ="red";
+    document.body.appendChild(div);
+var a = ["red","green","blue","black"];
+var i = 0;
+function shownum()
+{
+    div.style.background = a[i++];
+    if(i>3)
+    i = 0
+}
+setInterval(shownum,100);
+</script>
+</body>
+</head>
+</html>
