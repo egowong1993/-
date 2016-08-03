@@ -6,14 +6,14 @@ var i = 0;
 function show()
 {
     if(i>=arr.length)
-        {
-            i = 0;
-        }
+    {
+        i = 0;
+    }
     txt.innerHTML = arr[i++];
 }
 function stop()
 {
-    clearInterval(tast);
+    clearInterval(task);
     st.style.display = 'none';
     res.style.display = '';
     arr.splice(i-1,1)
@@ -24,9 +24,11 @@ function restart()
         alert("no one");
     else
         task = setInterval(show,100);
+    {
         res.style.display = 'none';
         st.style.display = '';
-}
+    }
+}  
 var task = setInterval(show,100);
 </script>
 </head>

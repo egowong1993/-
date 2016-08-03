@@ -1,0 +1,31 @@
+<html>
+<head>
+<script>
+var count = 0;
+for(var i=1;i<=9;i++)
+{
+    for(var j=1;j<=9;j++)
+    {
+        if(i==j)
+            continue;
+        for(var k=1;k<=9;k++)
+        {
+            if(k==i||k==j)
+                continue;
+            for(var m=1;m<=9;m++)
+            {
+                if([i,j,k].indexOf(m)!=-1)
+                    continue;
+                if((i*10+j)*(k*10+m)==(j*10+i)*(m*10+k))
+                {
+                    count++;
+                    document.write([i,j,k,m]+"<br/>"); 
+                }
+            }
+        }
+    }
+}
+document.write(count);
+</script>
+</head>
+</html>
