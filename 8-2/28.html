@@ -23,7 +23,12 @@ function getmax(arr)
 {
     var f = function (x,y)
             {
+                if(y.length>x.length)
+                    x=y;
+                return x;
             }
+    return arr.reduce(f);
+}
 </script>
 </head>
 </html>
