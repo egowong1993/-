@@ -1,0 +1,157 @@
+<html>
+<head>
+<script>
+function fiveGame(n)
+{
+    this.init_map=function(n)
+    {
+        var arr = [];
+        for(var j=0;j<n;j++)
+        {
+            var arr2 = [];
+            for(var i=0;i<n;i++)
+            {
+                arr2.push(0);
+            }
+            arr.push(arr2);
+        }
+        return arr;
+    }
+    this.divs = []; 
+    this.arr = this.init_map(n);  //调用结果
+    this.now = 1;  //当前下哪个子
+    this.showHTML=function()
+    {
+        if(this.divs.length == 0)
+            this.initHTML();
+        else
+        {
+            for(var i in this.arr)
+            {
+                for(var j in this.arr[i])
+                {
+                    //console.log(this.divs);
+                    this.f(i,j,this.divs[i][j]);
+                }
+            }
+        }
+    }
+    this.f = function(i,j,div)
+    {
+        //console.log(this.arr[i][j]);
+        if(this.arr[i][j]==0)
+            div.style.background = "url(null.png)";
+        else if(this.arr[i][j]==1)
+            div.style.background = "url(white.png)";
+        else
+            div.style.background = "url(black.png)";
+    }
+    this.initHTML=function()
+    {
+        for(var i in this.arr)
+        {
+            var d = [];
+            for(var j in this.arr[i])
+            {
+                var div = document.createElement("div")
+                div.style.width = "50px";
+                div.style.height = "50px";
+                this.f(i,j,div);
+                div.style.position = "absolute";
+                div.style.left = j*50+"px";
+                div.style.top = i*50+"px";
+                div.id = i+","+j; // 格子所在的下标
+                div.onclick = function(e) //e代表鼠标点击事件
+                {
+                    var d = e.srcElement; //取点击标签
+                    var arr = d.id.split(','); //切割
+                    arr = arr.map(Number);  //变成数值类型的数组
+                    fg.click(arr[0],arr[1]);
+                }
+                document.body.appendChild(div);
+                d.push(div);
+            }
+            this.divs.push(d);
+        }
+    }
+    this.click = function(x,y) //
+    {
+        if(this.arr[x][y]!=0) //下过的位置不能再下
+            return;
+        this.arr[x][y]=this.now;
+        this.showHTML();
+        if(this.cCount(x,y)>=4)
+            this.gameover();
+            
+        if(this.now==1)
+            this.now=2;
+        else
+            this.now=1;
+    }
+    this.gameover = function()
+    {
+        var name = this.now==1?"白方":"黑房"; //三目运算符
+        alert(name + "获得了胜利!");
+        this.arr=this.init_map(n);
+        this.showHTML();
+    }
+    this.cCount=function(x,y)
+    {
+        console.log()
+        var color = this.arr[x][y]; // 点的颜色
+        if(color==0)
+            return 0;
+        var fx = x - 1; //再循环里面改变x的值 就找不到x
+        var count = 0; //处理越界情况
+        while(fx>=0)
+        {
+            if(this.arr[fx][y]!=color) //找上面相同点的个数  
+                break;
+            else
+                count++;
+            fx--;
+        }
+        var fx = x + 1;
+        while(fx<this.arr.length)
+        {
+            if(this.arr[fx][y]!=color) //找下面相同点的个数
+                break;
+            else
+                count++;
+            fx++;    
+        }
+        return count;
+    }
+    this.rCount = function(x,y)
+    {
+        var count = 0;
+        var color = this.arr[x][y];
+        if(color==0)
+            return 0;
+        var fy = y - 1;
+        while(fy>=0)
+        {
+            if(this.arr[x][fy]!=color)
+                break
+            else
+                count++;
+            fy--;
+        }
+        var fy = y + 1;
+        while(fy<this.arr.length)
+        {
+            if(this.arr[x][fy]!=color)
+                break;
+            else
+                count++;
+            fy++;
+        }
+        return count;
+    }
+}
+var fg = new fiveGame(12);
+</script>
+</head>
+<body onload = "fg.showHTML()">
+</body>
+</html>

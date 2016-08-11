@@ -1,0 +1,36 @@
+<html>
+<head>
+<script>
+function addaa(s1,s2)
+{
+    var arr = [];
+    s1 = reverseStr(s1);
+    s2 = reverseStr(s2);
+    var jiewei = 0;
+    for(var i = 0;i<s1.length;i++)
+    {
+        var b = s2[i]-s1[i]-jiewei;
+        if(b<0)
+        {
+            arr.push(b+60);
+            jiewei = 1;
+        }
+        else
+        {
+            arr.push(b);
+            jiewei = 0;
+        }
+    }
+    return reverseStr(arr);
+}
+function aaaaa(s1,s2)
+{
+    return addaa(s1,s2)[0]*3600 + addaa(s1,s2)[1]*60 + addaa(s1,s2)[2];
+}
+function reverseStr(x)
+{
+    return x.reverse();
+}
+</script>
+</head>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head>
+<script>
+function isInt(n)
+{
+    return n == parseInt(n);
+}
+function wanquan(n)
+{
+    var m = Math.sqrt(n);
+    return isInt(m);
+}
+function huiwen(n)
+{
+    var a = n.toString();
+    var arr = a.split("");
+    arr.reverse();
+    return a == arr.join("");
+}
+</script>
+</head>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+<script>
+function hi(e)
+{
+    var n = e.keyCode;
+    if(n==37)
+    {    
+        xx.innerHTML = "вС";
+    }
+else if(n==38)
+    {
+        xx.innerHTML = "ио";
+    }
+else if(n==39)
+    {
+        xx.innerHTML = "ср";
+    }
+else if(n==40)
+    {
+        xx.innerHTML = "об";
+    }
+}
+document.onkeydown = hi; 
+</script>
+</head>
+<body>
+<div id ="xx"></div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<html>
+<head>
+<script>
+function Snake()
+{
+    this.arr = [[0,0,0,0], //游戏界面
+                [0,2,1,0],   
+                [0,0,1,0],
+                [0,0,0,0]];
+    this.dir = -2;    // -1 左 1 右  -2 上 2 下
+    this.points = [[1,2],[2,2]];
+    this.food = [1,1];
+    this.show = function ()
+                {
+                    for(var i in this.arr)
+                    {
+                        for(var j in this.arr[i])
+                        {
+                            this.arr[i][j] = 0;//清掉之前的格子
+                        }
+                    }
+                    for(var i in this.points)
+                    {
+                        var x = this.points[i][0];
+                        var y = this.points[i][1];
+                        this.arr[x][y] = 1;
+                    }
+                    var x = this.food[0];
+                    var y = this.food[1];
+                    this.arr[x][y] = 2;
+                    return this.arr;
+                }
+                
+    this.divs = [];         //把创建好的格子装到数组里面
+    this.showHTML= function ()
+    {
+        if(this.divs.length == 0)
+            this.initHTML();   //没有格子就创建格子
+        else                   //有个字就同步显示效果
+        {
+            for(var i in this.arr)
+            {
+                for(var j in this.arr[i]) //根据数组里面的0和1 显示效果同步
+                {
+                    this.f(i,j,this.divs[i][j]);
+                }
+            }
+        }
+    }
+    this.f = function(i,j,div)
+    {
+        if(this.arr[i][j]==0)
+            div.style.background = "gray";
+        else if(this.arr[i][j]==1)
+            div.style.background = "black";
+        else
+            div.style.background = "red";   
+    }
+    this.initHTML=function ()
+    {
+        for(var i in this.arr)
+        {
+            var d = [];
+            for(var j in this.arr[i])
+            {
+                var div = document.createElement("div");
+                div.style.width = "100px";
+                div.style.height = "100px";
+                this.f(i,j,div);
+                div.style.position = "absolute";
+                div.style.left = j*100+"px";
+                div.style.top = i*100+"px";
+                document.body.appendChild(div);
+                d.push(div);
+            }
+            this.divs.push(d);
+        }
+    }
+    
+    this.moveleft =  function ()
+                    {
+                    
+                        
+                        var dir = -1;// -1 左
+                        if(dir+this.dir==0)    //解决冲突  左移右移
+                            return;            
+                        var head = this.points[0];
+                        var x = head[0];
+                        var y = head[1]-1;
+                        if(y<0)
+                           y = this.arr[x].length-1;  //设为右边界
+                        var next = [x,y];  //
+                        this.points.unshift(next);  
+                        if(this.arr[x][y]!=2)
+                            this.points.pop();
+                        else 
+                        {
+                            while(true)
+                            {
+                                var x = parseInt(Math.random()*this.arr.length); //随机生成一个行列
+                                var y = parseInt(Math.random()*this.arr[0].length);
+                                if(this.arr[x][y]==1||this.arr[x][y]==2)
+                                    continue;
+                                this.food = [x,y];
+                                break;
+                            }
+                        }
+                        this.dir = dir;
+                        this.show();
+                    }
+    this.moveright = function ()
+                    {
+                        var dir = 1;
+                        if(dir+this.dir==0)   
+                            return;            
+                        var head = this.points[0];
+                        var x = head[0];
+                        var y = head[1]+1;
+                        if(y>this.arr[x].length-1)
+                            y = 0;
+                        var next = [x,y];  
+                        this.points.unshift(next);   
+                        this.dir = dir;
+                        if(this.arr[x][y]!=2)
+                            this.points.pop();
+                        else 
+                        {
+                            while(true)
+                            {
+                                var x = parseInt(Math.random()*this.arr.length); 
+                                var y = parseInt(Math.random()*this.arr[0].length);
+                                if(this.arr[x][y]==1||this.arr[x][y]==2)
+                                    continue;
+                                this.food = [x,y];
+                                break;
+                            }
+                        }
+                        this.dir = dir;
+                        this.show();
+                    }
+    this.movetop =  function ()
+                    {
+                        console.log(this.points);
+                        var dir = -2;// -1 左
+                        if(dir+this.dir==0)    //解决冲突  左移右移
+                            return;            
+                        var head = this.points[0];
+                        var x = head[0]-1;
+                        var y = head[1];
+                        if(x<0)
+                           x = this.arr.length-1;  //设为右边界
+                        var next = [x,y];  //
+                        this.points.unshift(next);  
+                        if(this.arr[x][y]!=2)
+                            this.points.pop();
+                        else 
+                        {
+                            while(true)
+                            {
+                                var x = parseInt(Math.random()*this.arr.length); //随机生成一个行列
+                                var y = parseInt(Math.random()*this.arr[0].length);
+                                if(this.arr[x][y]==1||this.arr[x][y]==2)
+                                    continue;
+                                this.food = [x,y];
+                                break;
+                            }
+                        }
+                        this.dir = dir;
+                        this.show();
+                        
+                    }
+    this.movedown =  function ()
+                     {
+                        console.log(this.points);
+                        var dir = 2;
+                        if(dir+this.dir==0)    
+                            return;            
+                        var head = this.points[0];
+                        
+                        var x = head[0]+1;
+                        var y = head[1];
+                        console.log(x+" "+ y);
+                        if(x>this.arr.length-1);
+                             x = 0;
+                        console.log(x+" "+ y);
+                        var next = [x,y]; 
+                        this.points.unshift(next);   
+                        if(this.arr[x][y]!=2)
+                            this.points.pop();
+                        else 
+                        {
+                            while(true)
+                            {
+                                var x = parseInt(Math.random()*this.arr.length); 
+                                var y = parseInt(Math.random()*this.arr[0].length);
+                                if(this.arr[x][y]==1||this.arr[x][y]==2)
+                                    continue;
+                                this.food = [x,y];
+                                break;
+                            }
+                        }
+                        this.dir = dir;
+                        this.show();
+                     }
+}
+
+
+
+var s = new Snake();
+function f(e)
+{
+    if(e.keyCode==37)
+    {
+        s.moveleft();
+        s.showHTML();
+    }
+    if(e.keyCode==38)
+    {
+        console.log("hahahaha");
+        s.movetop();
+        s.showHTML();
+    }
+    if(e.keyCode==39)
+    {
+        s.moveright();
+        s.showHTML();
+    }
+    if(e.keyCode==40)
+    {
+        s.movedown();
+        s.showHTML();
+    }
+}
+document.onkeydown = f;
+</script>
+</head>
+<body onload = "s.showHTML();">
+</body>
+</html>
