@@ -1,0 +1,95 @@
+<html>
+<head>
+<script>
+function Stack()  //ջ
+{
+    this.arr = [];
+    this.push = function (x)
+    {
+        this.arr.push(x);
+    }
+    this.pop = function()
+    {
+        return this.arr.pop();
+    }
+    this.peek = function ()
+    {
+        return this.arr[this.arr.length-1];
+    }
+    this.length = function (){return this.arr.length;};
+}
+//exp = "( + ( - 5 2 ) 10 )"
+//["(", "+", "(", "-", "5", "2", ")", "10", ")"]
+function evalfront(exp)
+{
+    var e = new Evalfront();
+    for(var i in exp)
+    {
+        if(exp[i]==")")
+        {
+            var arr1 = [];
+            do{
+                var a = s.pop();
+                arr1.push(a);
+              }while(a!="(");
+              s.push(eval4z(arr1));
+        }else
+            s.push(exp[i])
+    }
+    var b = s.peek();
+    return alert(b);
+}
+//["10","3","+"]  13
+//["3","5","-"]   2
+//["4","8","/"]   2
+function eval4z(exparr)
+{
+    var a = Number(exparr[0]);
+    var b = Number(exparr[1]);
+    switch(erparr[2])
+    {
+        case "+":
+            return a+b;
+        case "-":
+            return a-b;
+        case "/":
+            return a/b;
+    }
+}
+/////////////////////////////////////
+function isMatchParness(str)
+{
+    var s = new Stack();
+    for(var i in str)
+    {
+        if(str[i]=="(")
+            s.push(str[i]);
+        if(str[i]==")"
+        {
+            var t = s.peek();
+            if(!isMatchSingle([t,str[i]]))
+            {
+                s.pop();
+            }else
+            {
+                s.push(str[i]);
+            }
+        }
+    }
+    return s.length==0;
+}
+//["(",")"]
+//[")",")"]
+//["(","("]
+//[")","("]
+function isMatchSingle(arr)
+{
+    if(arr[0]=="("&&arr[1]==")")
+    {
+        return true;
+    }else
+        return false;
+}
+</script>
+</head>
+</html>

@@ -1,0 +1,26 @@
+<html>
+<head>
+<script>
+function occupy(a,b)
+{
+    var count = 0;
+    for(var i=0;i<a.length;i++)
+    {
+        if(b==a[i])
+            count++;
+    }
+    return count;
+}
+function occupyarr(a,b)
+{
+    var c =[];
+    for(var i=0;i<b.length;i++)
+    {
+        c.push(occupy(a,b[i]));
+    }
+    return c;
+}
+occupyarr()
+</script>
+</head>
+</html>

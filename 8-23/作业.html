@@ -1,0 +1,23 @@
+<html>
+<head>
+<script>
+function a(x,y)
+{
+    var z=x*y;
+    x = x+"";
+    y = y+"";
+    z = z+"";
+    var spr = x+y;
+    if(spr.split("").sort().join("")==z.split("").sort().join(""))
+    {
+        return document.write("true");
+    }
+    else
+    {
+        return document.write("false");
+    }
+}
+a(10,20)
+</script>
+</head>
+</html> 

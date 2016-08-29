@@ -1,0 +1,52 @@
+<html>
+<head>
+<script>
+var a = [1,5,13,21];
+var b = [2,4,15,16,23];
+var arr = a.concat(b);
+var temp = 0;
+for(var i=0;i<arr.length;i++)
+{
+    for(var j=0;j<arr.length-i;j++)
+    {
+        if(arr[j]>arr[j+1])
+        {
+            temp = arr[j+1];
+            arr[j+1] = arr[j];
+            arr[j] = temp;
+        }
+    }
+}
+
+function merge(arr1,arr2)
+{
+    var arr = [];
+    do
+    {
+        if(h1==undefined)
+        {
+            arr = arr.concat(arr2)
+            arr2 = [];
+            break;
+        }
+        if(h2==undefined)
+        {
+            arr = arr.concat(arr1)
+            arr1 = [];
+            break;
+        }
+        if(h1<h2)
+        {
+            arr.push(h1);
+            arr1.splice(0,1);
+        }
+        else
+        {
+            arr.push(h2);
+            arr2.splice(0,1)
+        }
+    }
+}
+</script>
+</head>
+</html>

@@ -1,0 +1,76 @@
+<html>
+<head>
+<script>
+function MineSweeper()
+{
+    this.data = [[],[],[],[],[],[]]
+    this.check = [[][][][][][]]
+    this.clickSpace = function(x,y)
+    {
+        //把自己点开
+        //遍历周围格子
+        //如果格子点开了 结束循环
+        //没点开的 判断格子是不是空白
+        //如果是空白 递归调用clickSpace（当前遍历格子的坐标 x,y）
+        //不是空白 点开遍历的格子
+    }
+}
+//给一个二位数组 -1代表雷 0代表空白 
+[[0 , 0, 0, 0],
+ [-1, 0, 0, 0],
+ [0 ,-1,-1, 0],
+ [0 ,-1, 0, 0]]
+[[1 ,1 ,0 ,0],
+ [-1,3 ,2 ,1],
+ [3, -1,-1,1],
+ [2, -1, 3,1]]
+ 
+for(var i=-1;i<=1;i++)
+{
+    for(var j=-1;j<=1;j++)
+    {
+        if(i==0&&j==0)
+            continue;
+        var nx = x+i;
+        var ny = y+j;
+    }
+}
+
+var arr = [[0 , 0, 0, 0],
+           [-1, 0, 0, 0],
+           [0 ,-1,-1, 0],
+           [0 ,-1, 0, 0]]
+function mineInit(arr)
+{
+    for(var i=0;in arr)//遍历二维数组中所有得点
+    {
+        for(var j in arr[i])
+        {
+            if(x==-1)//如果点是-1 那么不做处理
+                continue;
+            else
+                arr[i][j] = sideMineCount(arr,x,y)
+        }    //如果点是0 那么把点的值改成周围-1的个数
+    }
+    return arr;
+}
+function sizeMineCount(arr,x,y)
+{
+    var count = 0;
+    for(var i=-1;i<=1;i++)
+    {
+        for(var j=-1;j<=1;j++)
+        {
+            if(i==0&&j==0)
+                continue;
+            var nx = x+i;
+            var ny = y+j;
+            if(arr[nx]!=undefined && arr[nx][ny]==-1)
+                count++;
+        }
+    }
+}
+console.log(a(arr));
+</script>
+</head>
+</html>
